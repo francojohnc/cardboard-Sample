@@ -1,4 +1,4 @@
-# cardboard-Sample
+# cardboard-Sample with camera view
 Cardboard Java
 =====================
 Copyright (c) 2015 Google Inc.  All rights reserved.
