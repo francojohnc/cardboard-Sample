@@ -1,10 +1,7 @@
 package com.apkmarvel.cardboardsample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.google.vrtoolkit.cardboard.CardboardActivity;
 import com.google.vrtoolkit.cardboard.CardboardView;
@@ -20,27 +17,20 @@ import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
 
-import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.hardware.Camera;
 import android.opengl.GLES20;
-import android.opengl.Matrix;
-import android.os.Bundle;
-import android.util.Log;
 
-import com.google.vrtoolkit.cardboard.CardboardActivity;
-import com.google.vrtoolkit.cardboard.CardboardView;
-import com.google.vrtoolkit.cardboard.HeadTransform;
-import com.google.vrtoolkit.cardboard.Viewport;
-
-public class MainActivity extends CardboardActivity implements CardboardView.StereoRenderer,OnFrameAvailableListener {
+public class CardBoardCamera extends CardboardActivity implements CardboardView.StereoRenderer,OnFrameAvailableListener {
 
     private static final String TAG = "MainActivity";
     private static final int GL_TEXTURE_EXTERNAL_OES = 0x8D65;
     private Camera camera;
+    /*hud*/
+    private CardboardHUD cardboardHUD;
 
     private final String vertexShaderCode =
             "attribute vec4 position;" +
@@ -166,13 +156,18 @@ public class MainActivity extends CardboardActivity implements CardboardView.Ste
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_cardboard_camera);
         cardboardView = (CardboardView) findViewById(R.id.cardboard_view);
         cardboardView.setRenderer(this);
         setCardboardView(cardboardView);
-
+        cast();
         mCamera = new float[16];
         mView = new float[16];
+    }
+
+    private void cast() {
+        cardboardHUD = (CardboardHUD) findViewById(R.id.hud);
+        cardboardHUD.show3DToast("HUD created");
     }
 
     @Override
@@ -255,5 +250,7 @@ public class MainActivity extends CardboardActivity implements CardboardView.Ste
     }
     @Override
     public void onCardboardTrigger() {
+        Log.e(TAG,"onCardboardTrigger");
+        cardboardHUD.show3DToast("Pull the magnet when you find an object.");
     }
 }

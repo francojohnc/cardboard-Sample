@@ -33,12 +33,12 @@ import android.widget.TextView;
 /**
  * Contains two sub-views to provide a simple stereo HUD.
  */
-public class CardboardOverlayView extends LinearLayout {
+public class CardboardHUD extends LinearLayout {
   private final CardboardOverlayEyeView leftView;
   private final CardboardOverlayEyeView rightView;
   private AlphaAnimation textFadeAnimation;
 
-  public CardboardOverlayView(Context context, AttributeSet attrs) {
+  public CardboardHUD(Context context, AttributeSet attrs) {
     super(context, attrs);
     setOrientation(HORIZONTAL);
     LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1.0f);
