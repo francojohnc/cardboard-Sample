@@ -22,8 +22,8 @@ import javax.microedition.khronos.opengles.GL10;
 /**
  * Created by JCF on 4/7/2016.
  */
-public class ViewRederer implements CardboardView.StereoRenderer, SurfaceTexture.OnFrameAvailableListener {
-    public static final String TAG = ViewRederer.class.getSimpleName();
+public class ViewRenderer implements CardboardView.StereoRenderer, SurfaceTexture.OnFrameAvailableListener {
+    public static final String TAG = ViewRenderer.class.getSimpleName();
     private static final int GL_TEXTURE_EXTERNAL_OES = 0x8D65;
     private Camera camera;
     private final String vertexShaderCode =
@@ -75,7 +75,7 @@ public class ViewRederer implements CardboardView.StereoRenderer, SurfaceTexture
     private float[] mView;
     private float[] mCamera;
 
-    public ViewRederer() {
+    public ViewRenderer() {
         mCamera = new float[16];
         mView = new float[16];
     }
