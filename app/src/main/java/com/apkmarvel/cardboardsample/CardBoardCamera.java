@@ -9,7 +9,7 @@ import com.google.vrtoolkit.cardboard.CardboardView;
 public class CardBoardCamera extends CardboardActivity {
     public static final String TAG = ViewRenderer.class.getSimpleName();
     private CardboardView cardboardView;
-    /*hud*/
+    /*hud*/ 
     private CardboardHUD cardboardHUD;
     @Override
     public void onCreate(Bundle savedInstanceState) {
